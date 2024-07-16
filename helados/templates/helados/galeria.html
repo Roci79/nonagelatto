@@ -1,0 +1,188 @@
+
+
+{% extends 'helados/index.html' %}
+
+
+    {% block header %}
+    
+    <div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-3 mt-lg-5">Fotos</h1>
+            <div class="d-inline-flex align-items-center text-white">
+            </div>
+        </div>
+    </div>
+        
+        {% endblock %}
+    
+    {% block section %}
+    
+    
+    {% load static %}
+
+    <!-- Portfolio Start -->
+     <div class="container-fluid py-5 px-0">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="section-title text-center mb-5">¡Descubre el placer de NonaGelato, cremosos helados elaborados con nuestra leche orgánica que te invitan a saborear cada momento!</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ul class="list-inline mb-4 pb-2" id="portfolio-flters">
+                        <!-- Filtros para la galería de fotos. -->
+                        <li class="btn btn-sm btn-outline-primary m-1"  data-filter="*">Todos</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">En Cristal</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">En Cucurucho</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row m-0 portfolio-container">
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">    
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-4.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'second'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item second">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/cucu-6.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'sabor' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-2.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-5.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <!-- Elemento de la galería con la clase 'second'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item second">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/promotion.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'sabor' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-6.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-8.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <!-- Elemento de la galería con la clase 'second'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item second">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/cucu-4.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'sabor' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Elemento de la galería con la clase 'first'. -->
+                <div class="col-lg-4 col-md-6 p-0 portfolio-item first">
+                    <div class="position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-10.jpg' %}" alt="">
+                        <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                            <i class="fa fa-plus text-primary" style="font-size: 60px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+     // Espera a que el contenido del DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", function() {
+
+    // Selecciona todos los elementos de lista (<li>) dentro del contenedor con el ID 'portfolio-flters'
+    const filters = document.querySelectorAll('#portfolio-flters li');
+
+    // Selecciona todos los elementos con la clase 'portfolio-item'
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    // Por cada filtro...
+    filters.forEach(filter => {
+
+        // Añade un evento 'click' a cada filtro
+        filter.addEventListener('click', function() {
+
+            // Obtiene el valor del atributo 'data-filter' del filtro clicado
+            const filterValue = this.getAttribute('data-filter');
+
+            // Oculta todos los elementos del portafolio
+            portfolioItems.forEach(item => {
+                item.style.display = 'none';
+            });
+
+            // Si el valor del filtro es '*', muestra todos los elementos del portafolio
+            if (filterValue === '*') {
+                portfolioItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            } else {
+                // Selecciona los elementos del portafolio que coinciden con el filtro
+                const selectedItems = document.querySelectorAll(filterValue);
+
+                // Muestra solo los elementos seleccionados del portafolio
+                selectedItems.forEach(item => {
+                    item.style.display = 'block';
+                });
+            }
+
+            // Elimina la clase 'active' de todos los filtros
+            filters.forEach(filter => {
+                filter.classList.remove('active');
+            });
+
+            // Añade la clase 'active' al filtro clicado
+            this.classList.add('active');
+        });
+    });
+});
+    </script>
+
+    <!-- Portfolio End -->
+    {% endblock %}
+ 
+    
+    
+    
+    
+    
+    
+    

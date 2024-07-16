@@ -1,0 +1,126 @@
+{% extends 'helados/index.html' %}
+
+{% block header %}
+    <div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-3 mt-lg-5">Carrito</h1>
+            <div class="d-inline-flex align-items-center text-white">     
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block section %}
+{% load static %}
+<div class="container-fluid py-5 px-0">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <br>
+            <div class="col-lg-7">
+                <h1 class="section-title position-relative text-center mb-5">Tu elección de hoy.</h1>
+            </div>
+        </div>
+        <div class="row m-0" style="display: flex; justify-content: space-between;">
+            <!-- Sección que muestra dos categorías de productos con enlaces e imágenes. -->
+            <div class="col-lg-4 col-md-6 p-0" style="margin-right: 0px; text-align: center; position: relative;">
+                <p style="position: absolute; top: -30px; width: 100%; text-align: center;">Helados de la casa</p>
+                <br>
+                <div class="position-relative overflow-hidden">
+                    <a class="portfolio-btn" href="{% url 'productos' %}" data-lightbox="portfolio">
+                        <!-- Enlace a la página de productos. -->
+                        <img class="img-fluid w-100" src="{% static 'helados/img/portada-3.jpg' %}" alt="" style="max-width: 150px;">
+                        <!-- Imagen para la primera categoría de productos. -->
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 p-0" style="margin-right: 0; text-align: center; position: relative;">
+                <p style="position: absolute; top: -30px; width: 100%; text-align: center;">Cucuruchos</p>
+                <!-- Título para la segunda categoría de productos. -->
+                <br>
+                <div class="position-relative overflow-hidden">
+                    <a class="portfolio-btn" href="{% url 'sabor' %}" data-lightbox="portfolio">
+                        <!-- Enlace a la página de sabores. -->
+                        <img class="img-fluid w-100" src="{% static 'helados/img/cucu-6.jpg' %}" alt="" style="max-width: 150px;">
+                        <!-- Imagen para la segunda categoría de productos. -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="bg-light rounded p-4 mb-4">
+            <h2 class="mb-4" style="text-align: center;">Productos en tu carrito</h2>
+            <ul class="list-group">
+                {% for item_id, item in carrito.items %}
+                    <!-- Bucle que recorre cada producto en el carrito. -->
+                    <li style="list-style-type: none;">
+                        <div class="row align-items-center" style="justify-content: center;">
+                            <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                                <h5 class="mb-0" id="nombre-producto">{% if item.tipo_producto == "sabor" %} Cucurucho de {% endif %}{{ item.nombre }}</h5>
+                                <!-- Muestra el nombre del producto. -->
+                                <br>
+                                <p class="text-muted">Precio: {{ item.precio }}€</p>
+                                <!-- Muestra el precio del producto. -->
+                                <p class="text-muted">Cantidad: {{ item.cantidad }}</p>
+                                <!-- Muestra la cantidad del producto en el carrito. -->
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4 pb-2">
+                                <img src="{{ item.imagen_url }}" style="object-fit: cover; width: 80px; height: 80px;">
+                                <!-- Muestra la imagen del producto. -->
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-12 mb-4 pb-2 d-flex justify-content-center justify-content-md-end flex-wrap">
+                                <form action="{% url 'eliminar_producto' item_id %}" method="POST" class="mb-2 me-2">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-primary" style="width: 110%;">Eliminar</button>
+                                    <!-- Botón para eliminar el producto del carrito. -->
+                                </form>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <form action="{% url 'agregar_producto' tipo_producto='helado' producto_id=item_id %}" method="POST" class="mb-2 me-2">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-secondary" style="width: 100%;">+</button>
+                                    <!-- Botón para aumentar la cantidad del producto en el carrito. -->
+                                </form>
+                                <form action="{% url 'restar_producto' tipo_producto='helado' producto_id=item_id %}" method="POST" class="mb-2 me-2">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-primary" style="width: 100%;">-</button>
+                                    <!-- Botón para disminuir la cantidad del producto en el carrito. -->
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="bg-light rounded p-4 mb-4">
+            <h2 class="mb-4">Resumen del Pedido</h2>
+            <!-- Título de la sección del resumen del pedido. -->
+            <p>Total de productos: {{ total_productos }}</p>
+            <!-- Muestra el total de productos en el carrito. -->
+            <p>Total a pagar: {{ total_pagar }}€</p>
+            <!-- Muestra el total a pagar por los productos en el carrito. -->
+            <a href="{% url 'pagar' %}" class="btn btn-primary btn-block">Pagar</a>
+            <!-- Botón para proceder al pago. -->
+        </div>
+    </div>
+</div>
+
+<script>
+            // Guardamos la posición del scroll antes de que la página se recargue
+            window.addEventListener("beforeunload", function() {
+            localStorage.setItem("scrollPosition", window.scrollY);
+        });
+    
+        // Cuando la página se carga, recuperamos y establecemos la posición del scroll
+        window.addEventListener("load", function() {
+            const scrollPosition = localStorage.getItem("scrollPosition");
+            if (scrollPosition) {
+                // Si hay una posición guardada, hacemos scroll hasta esa posición
+                window.scrollTo(0, parseInt(scrollPosition, 10));
+            }
+        });
+</script>
+{% endblock %}

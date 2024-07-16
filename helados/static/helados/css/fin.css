@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Cambia según los colores de tu proyecto */
+    margin: 0;
+    overflow: hidden;
+}
+.carousel-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-color:#333; /* Cambia según los colores de tu proyecto */
+}
+.carousel {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    animation: scroll 248s linear; /* Ajustamos la duración de la animación a 248 segundos */
+}
+.carousel-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 33vh; /* Ajusta según el número de elementos */
+    color: white; /* Cambia según los colores de tu proyecto */
+}
+.carousel-item img {
+    width: 130px; /* Ajusta según tus necesidades */
+    height: 130px; /* Ajusta según tus necesidades */
+    object-fit: cover;
+    border-radius: 50%;
+}
+@keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-220%); } /* Ajusta esto según el número de elementos */
+}
+

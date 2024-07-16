@@ -1,0 +1,66 @@
+{% extends 'helados/index.html' %}
+
+{% block header %}
+
+<div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Los Nuestros</h1>
+        <div class="d-inline-flex align-items-center text-white">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block section %}
+
+{% load static %}
+
+    <!-- Services Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="section-title position-relative mb-5">"Refresca tu Día, ¡Atrévete a Probarlo!"</h1>
+                </div>
+                <div class="col-lg-6 mb-5 mb-lg-0 pb-5 pb-lg-0"></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                        <div class="service-item" style="margin-left:10px ;">
+                            <div class="service-img mx-auto">
+                                {% if helado.foto %}
+                                    <img class="w-100 h-150 bg-light p-3" src="{{ helado.foto.url }}">
+                                    <!-- Si el helado tiene una foto, se muestra esa foto. -->
+                                {%else%}
+                                    <img class="w-100 h-150 bg-light p-3" src="{% static 'helados/img/service-1.jpg' %}">
+                                     <!-- Si el helado no tiene una foto, se muestra una imagen por defecto. -->
+                                {% endif %}
+                            </div>
+                            <div class="position-relative text-center bg-light rounded p-4 pb-5" style="margin-top: -75px;">
+                                <h5 class="font-weight-semi-bold mt-5 mb-3 pt-5">{{ helado.nombre }}</h5>
+                                <p style="text-align: justify;">{{ helado.descripcion }}</p>
+                            </div>
+                            <br>
+                            <p style="text-align: justify;">Ingredientes <br>
+                                {{ helado.ingredientes }}</p>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-auto">
+                <button class="btn btn-primary mt-3" onclick="goBack()">Volver</button>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+    <script>
+        // Función que navega a la página anterior en el historial del navegador
+        function goBack() {
+            window.history.back();// Utiliza el historial del navegador para retroceder una página
+        }
+    </script>
+    {% endblock %}

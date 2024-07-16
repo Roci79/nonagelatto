@@ -1,0 +1,83 @@
+
+{% extends 'helados/index.html' %}
+
+{% block header %}
+
+<div class="jumbotron jumbotron-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container text-center py-5">
+        <h1 class="text-white display-3 mt-lg-5">Contactar</h1>
+        <div class="d-inline-flex align-items-center text-white">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block section %}
+{% load static %}
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <form action="" method="POST">
+            {% csrf_token %}
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h1 class="section-title position-relative text-center mb-5">Contacta Con Nosotros Para Cualquier Duda</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="contact-form bg-light rounded p-5">
+                        <div id="success"></div>
+                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="form-row">
+                                <div class="col-sm-6 control-group">
+                                    <input type="text" class="form-control p-4" id="name" placeholder="Nombre" required="required" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="col-sm-6 control-group">
+                                    <input type="email" class="form-control p-4" id="email" placeholder="Email" required="required"/>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <input type="text" class="form-control p-4" id="subject" placeholder="Motivo" required="required" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group">
+                                <textarea class="form-control p-4" rows="6" id="message" placeholder="Mensaje" required="required"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block py-3 px-5" type="submit" id="sendMessageButton">Mandar Mensaje</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-validate@2.2.0/dist/bootstrap-validate.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        
+            bootstrapValidate('#name', 'required:Por favor introduce tu nombre');
+            bootstrapValidate('#email', 'required:Por favor introduce tu email|email:Introduce un email válido');
+            bootstrapValidate('#subject', 'required:Por favor introduce tu motivo');
+            bootstrapValidate('#message', 'required:Por favor introduce tu mensaje');
+    
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+               
+                if (!this.checkValidity()) {
+                    event.preventDefault(); 
+                    event.stopPropagation();
+                }
+    
+                this.classList.add('was-validated');
+            }, false);
+        });
+    </script>
+
+    <!-- Contact End -->
+{% endblock %}

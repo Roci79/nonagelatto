@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de Pago</title>
+        <link href="{% static 'helados/css/pagar.css' %}" rel="stylesheet">
+        <link href="{% static 'helados/img/cucu.jpg' %}" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <div class="payment-container">
+            <div class="total-amount">
+                Total a pagar: {{ total_pagar }} €
+            </div>
+            <div class="payment-method">
+                <h2>Método de Pago</h2>
+                <label>
+                    <input type="radio" name="payment-method" value="tarjeta">
+                    <img src="{% static 'helados/img/tarjeta3.jpg' %}" alt="Tarjeta">
+                    Tarjeta
+                </label>
+                <label>
+                    <input type="radio" name="payment-method" value="paypal">
+                    <img src="{% static 'helados/img/paypal.png' %}" alt="PayPal">
+                    PayPal
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Número de Tarjeta</label>
+                <input type="text" id="card-number" name="card-number">
+            </div>
+            <div class="form-group">
+                <label for="expiry-date">Año de Caducidad</label>
+                <input type="text" id="expiry-date" name="expiry-date">
+            </div>
+            <div class="form-group">
+                <label for="cvc">CVC</label>
+                <input type="text" id="cvc" name="cvc">
+            </div>
+            <button class="btn"><a href="{% url 'fin' %}" style="text-decoration: none; color: white">Terminar y Pagar</a></button>
+            <br>
+            <br>
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-auto">
+                        <button class="btn btn-primary mt-3" onclick="goBack()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+   
+    <!-- Services End -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    </html>
+    

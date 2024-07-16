@@ -1,0 +1,77 @@
+ <!-- Topbar Start -->
+ <div class="container-fluid bg-primary py-3 d-none d-md-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-lg-left mb-2 mb-lg-0">
+                <div class="d-inline-flex align-items-center">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item" style="list-style-type: none;"><a class="text-white px-3" href="{% url 'logout' %}">Salir</a></li>
+                    {% else %}
+                        <li class="nav-item" style="list-style-type: none;"><a class="text-white pr-3" href="{% url 'login' %}">Entrar</a></li>
+                        <span class="text-white">|</span>
+                        <li class="nav-item" style="list-style-type: none;"><a class="text-white pl-3" href="{% url 'register_user' %}">Registrarse</a>
+                    {% endif %}        
+                </div>
+            </div>
+            <div class="col-md-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text-white px-3" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text-white pl-3" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a class="text-white pl-5" href="{% url 'ver_carro' %}">
+                       <i class="fab fa-bi bi-cart"></i>
+                    </a>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+</i>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid position-relative nav-bar p-0">
+    <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto py-0">
+                    <a href="{% url 'home' %}" class="nav-item nav-link active">Inicio</a>
+                    <a href="{% url 'about' %}" class="nav-item nav-link">Nosotros</a>
+                    <a href="{% url 'productos' %}" class="nav-item nav-link">Productos</a>
+                </div>
+                <div class="navbar-brand mx-5 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">Nona</span>Gelato</h1>
+                </div>
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="{% url 'servicios' %}" class="nav-item nav-link">Servicios</a>
+                    <a href="{% url 'galeria' %}" class="nav-item nav-link">Fotos</a>
+                    <a href="{% url 'contactar' %}" class="nav-item nav-link">Contactar</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Navbar End -->
+
